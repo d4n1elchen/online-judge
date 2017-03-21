@@ -43,17 +43,19 @@ int main()
   string in, word;
   while(getline(cin, in)) {
     stringstream ss(in);
-    int sum = 0;
-    int tsum = 0;
+    long long sum = 0;
+    long long tsum = 0;
     int neg = false;
     while(ss >> word) {
       int n = wtoi(word);
       if(n == -1) neg = true;
-      else if(n == 100 || n == 1000 || n == 1000000) {
+      else if(n == 100) tsum = tsum*n;
+      else if(n == 1000 || n == 1000000) {
         sum += tsum*n;
         tsum = 0;
       }
       else tsum += n;
+      /* cout << tsum << '/' << sum << '\n'; */
     }
     sum += tsum;
     if(neg) sum = -sum;
