@@ -1,0 +1,9 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=00401288
+eax=000043FC ebx=0028CCAC ecx=0028B760 edx=00000000 esi=612F402A edi=611D9DAE
+ebp=0028CC88 esp=0028CC50 program=C:\Users\daniel\.babun\cygwin\home\daniel\Code\online-judge\poj\2533\2533-Longest_Ordered_Subsequence.exe, pid 4700, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+0028CC88  00401288 (00000001, 0028CCAC, 80000100, 61007A6A)
+0028CD28  61007ACF (00000000, 0028CD84, 61006B00, 00000000)
+End of stack trace
