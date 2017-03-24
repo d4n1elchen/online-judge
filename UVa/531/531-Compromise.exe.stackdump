@@ -1,0 +1,9 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=6D6BA0C9
+eax=00000019 ebx=00000016 ecx=0028CB18 edx=00000024 esi=612F73C6 edi=611D9DAE
+ebp=0028CC88 esp=0028CC00 program=C:\Users\daniel\.babun\cygwin\home\daniel\Code\online-judge\UVa\531\531-Compromise.exe, pid 5524, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args
+0028CC88  6D6BA0C9 (00000001, 0028CCAC, 80000100, 61007A6A)
+0028CD28  61007ACF (00000000, 0028CD84, 61006B00, 00000000)
+End of stack trace
