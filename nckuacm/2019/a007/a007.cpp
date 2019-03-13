@@ -25,7 +25,6 @@ int main()
         if(m==0) break;
 
         cnt = 0;
-        memset(maze, 0, sizeof(maze));
 
         for(int i=1; i<=m; ++i)
             for(int j=1; j<=n; ++j)
