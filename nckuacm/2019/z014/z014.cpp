@@ -18,7 +18,7 @@ void bfs(int N) {
     while(!Q.empty()) {
         tie(sstate, nstate, n) = Q.front(); Q.pop();
         /* printf("(%d, %d, %d)\n", sstate, nstate, n); */
-        if(nstate == 7) {
+        if(nstate==7) {
             ++cnt[n];
         } else if(n<N) {
             ++n;
@@ -33,7 +33,7 @@ void bfs(int N) {
                     Q.emplace(sstate+i, nstate-i, n);
             }
             // Empty ship
-            if(((n&1) && sstate!=7 && sstate!=3 && sstate!=6)      // ->
+            if(((n&1) && sstate!=7 && sstate!=3 && sstate!=6)           // ->
                     || (!(n&1) && nstate!=7 && nstate!=3 && nstate!=6)) // <-
                 Q.emplace(sstate, nstate, n);
         }
