@@ -16,12 +16,10 @@ int main()
         cin >> C[i];
     }
 
-    ans = N-1;
     for(i=0; i<N/2; ++i) {
-        if(C[i]!=C[N-1-i]) break;
+        if((C[i]!=C[N-1]) || (C[0]!=C[N-1-i])) break;
     }
-
-    cout << ans-i;
+    cout << N-1-i;
 
     return 0;
 }
