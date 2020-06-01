@@ -1,6 +1,6 @@
 # LeetCode
 
-## [leetcode-cli](https://skygragon.github.io/leetcode-cli/) notes
+## [leetcode-cli](https://github.com/leetcode-tools/leetcode-cli) notes
 [Command doc](https://skygragon.github.io/leetcode-cli/commands)
 ```sh
 leetcode show <question_no> -g -x -l cpp
