@@ -43,26 +43,19 @@ class Solution {
 public:
     int threeSumClosest(vector<int>& nums, int target) {
         int N = nums.size();
-
         sort(nums.begin(), nums.end());
         int closest = nums[0] + nums[1] + nums[2];
-        for (int i=0; i<N; ++i) {
+        for (int i = 0; i < N - 2; ++i) {
             int nt = target - nums[i];
-            int L = 0, R = N-1;
+            int L = i + 1, R = N - 1;
             while (L < R) {
-                if (R==i) {
-                    R--; continue;
-                } else if (L==i) {
-                    L++; continue;
-                }
-
                 if (abs(nums[L] + nums[R] + nums[i] - target) < abs(closest - target)) closest = nums[L] + nums[R] + nums[i];
 
                 if (nums[L] + nums[R] == nt) return target;
                 else if (nums[L] + nums[R] > nt) {
-                    R--;
+                    do R--; while (L < R && (R == i || nums[R] == nums[R+1]));
                 } else {
-                    L++;
+                    do L++; while (L < R && (L == i || nums[L] == nums[L-1]));
                 }
             }
         }
