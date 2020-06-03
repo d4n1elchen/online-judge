@@ -46,16 +46,14 @@ public:
         sort(nums.begin(), nums.end());
         int closest = nums[0] + nums[1] + nums[2];
         for (int i = 0; i < N - 2; ++i) {
-            int nt = target - nums[i];
             int L = i + 1, R = N - 1;
             while (L < R) {
                 if (abs(nums[L] + nums[R] + nums[i] - target) < abs(closest - target)) closest = nums[L] + nums[R] + nums[i];
-
-                if (nums[L] + nums[R] == nt) return target;
-                else if (nums[L] + nums[R] > nt) {
-                    do R--; while (L < R && (R == i || nums[R] == nums[R+1]));
+                if (nums[L] + nums[R] + nums[i] == target) return target;
+                else if (nums[L] + nums[R] + nums[i] > target) {
+                    do R--; while (L < R && (nums[R] == nums[R+1]));
                 } else {
-                    do L++; while (L < R && (L == i || nums[L] == nums[L-1]));
+                    do L++; while (L < R && (nums[L] == nums[L-1]));
                 }
             }
         }
