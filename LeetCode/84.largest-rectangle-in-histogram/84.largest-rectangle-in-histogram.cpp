@@ -44,7 +44,24 @@
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
-        
+        int N = heights.size();
+        vector<int> left(N, 0), right(N, 0);
+
+        for (int i=0; i<N; ++i) {
+            int p = i;
+            while (p-1 >= 0 && heights[p-1] >= heights[i]) p = left[p-1];
+            left[i] = p;
+        }
+        for (int i=N-1; i>=0; --i) {
+            int p = i+1;
+            while (p < N && heights[p] >= heights[i]) p = right[p];
+            right[i] = p;
+        }
+        int ans = 0;
+        for (int i=0; i<N; ++i) {
+            ans = max(ans, heights[i] * (right[i] - left[i]));
+        }
+        return ans;
     }
 };
 // @lc code=end
