@@ -46,14 +46,15 @@ public:
     int minCost(vector<vector<int>>& costs) {
         if (costs.size() == 0) return 0;
         int N = costs.size();
-        vector<vector<int>> dp(N, vector<int>(3, INF));
+        vector<vector<int>> dp(2, vector<int>(3, INF));
         dp[0] = costs[0];
         for (int i=1; i<N; ++i) {
-            dp[i][0] = min(dp[i-1][1], dp[i-1][2]) + costs[i][0];
-            dp[i][1] = min(dp[i-1][0], dp[i-1][2]) + costs[i][1];
-            dp[i][2] = min(dp[i-1][1], dp[i-1][0]) + costs[i][2];
+            dp[1][0] = min(dp[0][1], dp[0][2]) + costs[i][0];
+            dp[1][1] = min(dp[0][0], dp[0][2]) + costs[i][1];
+            dp[1][2] = min(dp[0][1], dp[0][0]) + costs[i][2];
+            dp[0] = dp[1];
         }
-        return min({dp[N-1][0], dp[N-1][1], dp[N-1][2]});
+        return min({dp[0][0], dp[0][1], dp[0][2]});
     }
 };
 // @lc code=end
