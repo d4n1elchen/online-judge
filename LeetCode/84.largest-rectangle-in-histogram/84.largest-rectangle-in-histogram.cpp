@@ -44,24 +44,23 @@
 class Solution {
 public:
     int largestRectangleArea(vector<int>& heights) {
+        if (heights.size() == 0) return 0;
         int N = heights.size();
-        vector<int> left(N, 0), right(N, 0);
-
+        stack<int> st;
+        st.push(-1);
+        int ma = 0;
         for (int i=0; i<N; ++i) {
-            int p = i;
-            while (p-1 >= 0 && heights[p-1] >= heights[i]) p = left[p-1];
-            left[i] = p;
+            while (st.top() != -1 && heights[i] < heights[st.top()]) {
+                int j = st.top(); st.pop();
+                ma = max(ma, heights[j] * (i - st.top() - 1));
+            }
+            st.push(i);
         }
-        for (int i=N-1; i>=0; --i) {
-            int p = i+1;
-            while (p < N && heights[p] >= heights[i]) p = right[p];
-            right[i] = p;
+        while (st.top() != -1) {
+            int j = st.top(); st.pop();
+            ma = max(ma, heights[j] * (N - st.top() - 1));
         }
-        int ans = 0;
-        for (int i=0; i<N; ++i) {
-            ans = max(ans, heights[i] * (right[i] - left[i]));
-        }
-        return ans;
+        return ma;
     }
 };
 // @lc code=end
